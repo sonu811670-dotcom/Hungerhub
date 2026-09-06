@@ -38,21 +38,21 @@ require 'db.php';
 
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="images/slide1.png" class="d-block w-100" alt="Delicious Dosa" />
+        <img src="images/slide1.png" class="d-block w-100" alt="Delicious Dosa" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/slide1.png';" />
         <div class="carousel-caption d-none d-md-block">
           <h2 class="fw-bold text-shadow">Crispy dosa with flavorful chutneys</h2>
           <p>Straight to your doorstep.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="images/slide2.png" class="d-block w-100" alt="Burger & Fries" />
+        <img src="images/slide2.png" class="d-block w-100" alt="Burger & Fries" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/slide2.png';" />
         <div class="carousel-caption d-none d-md-block">
           <h2 class="fw-bold text-shadow">Juicy Burgers & Crispy Fries</h2>
           <p>The combo that everyone loves.</p>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="images/slide3.png" class="d-block w-100" alt="Biryani Special" />
+        <img src="images/slide3.png" class="d-block w-100" alt="Biryani Special" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/slide3.png';" />
         <div class="carousel-caption d-none d-md-block">
           <h2 class="fw-bold text-shadow">Authentic Biryani Flavors</h2>
           <p>Spiced to perfection, every time.</p>
@@ -82,7 +82,7 @@ require 'db.php';
       <!-- Row: Image + Intro -->
       <div class="row align-items-center mb-5">
         <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
-          <img src="images/about_us.png" alt="About HungerHub" class="img-fluid rounded shadow" id="about_img" />
+          <img src="images/about_us.png" alt="About HungerHub" class="img-fluid rounded shadow" id="about_img" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/about_us.png';" />
         </div>
         <div class="col-md-6" data-aos="fade-left">
           <h2 class="fw-bold mb-3 why-heading">Why Choose <span class="text-warning">HungerHub</span>?</h2>
@@ -148,7 +148,7 @@ require 'db.php';
         <!-- Cheese Pizza -->
         <div class="col-md-4 mb-4">
           <div class="card h-100 shadow-sm text-center">
-            <img src="images/cheese_pizza.png" class="card-img-top mx-auto" alt="Cheese Pizza" />
+            <img src="images/cheese_pizza.png" class="card-img-top mx-auto" alt="Cheese Pizza" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/cheese_pizza.png';" />
             <div class="card-body">
               <h3>Cheese Pizza</h3>
               <p>Delicious cheese loaded pizza with Italian herbs.</p><br>
@@ -163,7 +163,7 @@ require 'db.php';
         <!-- Chhole Bhature -->
         <div class="col-md-4 mb-4">
           <div class="card h-100 shadow-sm text-center">
-            <img src="images/chhole_bhature.png" class="card-img-top mx-auto" alt="Chhole Bhature" />
+            <img src="images/chhole_bhature.png" class="card-img-top mx-auto" alt="Chhole Bhature" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/chhole_bhature.png';" />
             <div class="card-body">
               <h3>Chhole Bhature</h3>
               <p>Authentic North Indian delight served with spicy chana and fluffy bhature.</p>
@@ -180,7 +180,7 @@ require 'db.php';
 
         <div class="col-md-4 mb-4">
           <div class="card h-100 shadow-sm text-center">
-            <img src="images/chicken_biryani.png" class="card-img-top mx-auto" alt="Chicken Biryani" />
+            <img src="images/chicken_biryani.png" class="card-img-top mx-auto" alt="Chicken Biryani" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/chicken_biryani.png';" />
             <div class="card-body">
               <h3>Chicken Biryani</h3>
               <p>Spiced and flavorful Hyderabadi-style biryani.</p><br>

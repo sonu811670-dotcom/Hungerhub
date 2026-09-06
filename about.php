@@ -272,7 +272,7 @@ require 'db.php';
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="team-card text-center p-4">
-                        <img src="images/ceo.jpeg" alt="prakash chettiyar" class="team-img mb-3">
+                        <img src="images/ceo.jpeg" alt="prakash chettiyar" class="team-img mb-3" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/ceo.jpeg';">
                         <h4 class="fw-bold">prakash chettiyar</h4>
                         <p class="text-warning fw-bold">CEO & Founder</p>
                         <p class="text-muted">Passionate about connecting people with great food. 10+ years in food industry.</p>
@@ -286,7 +286,7 @@ require 'db.php';
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="team-card text-center p-4">
-                        <img src="images/Sonu.jpeg" alt="Sonu kumar" class="team-img mb-3">
+                        <img src="images/Sonu.jpeg" alt="Sonu kumar" class="team-img mb-3" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/Sonu.jpeg';">
                         <h4 class="fw-bold">Sonu kumar</h4>
                         <p class="text-warning fw-bold">Head of Operations</p>
                         <p class="text-muted">Ensures smooth operations and exceptional customer service across all locations.</p>
@@ -300,7 +300,7 @@ require 'db.php';
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="team-card text-center p-4">
-                        <img src="images/head.jpeg" alt="Surasti Sachdev" class="team-img mb-3">
+                        <img src="images/head.jpeg" alt="Surasti Sachdev" class="team-img mb-3" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/head.jpeg';">
                         <h4 class="fw-bold">Surasti Sachdev</h4>
                         <p class="text-warning fw-bold">Head Chef Partner</p>
                         <p class="text-muted">Culinary expert who ensures all our partner restaurants meet our quality standards.</p>

@@ -208,7 +208,7 @@ $result = $conn->query("SELECT * FROM menu_items WHERE $where ORDER BY created_a
         <?php while ($row = $result->fetch_assoc()): ?>
           <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-4" data-aos="fade-up">
             <div class="card h-100 shadow-sm text-center p-3 d-flex flex-column">
-              <img src="<?= htmlspecialchars($row['image']) ?>" class="card-img-top mb-2" alt="<?= htmlspecialchars($row['name']) ?>">
+              <img src="<?= htmlspecialchars($row['image']) ?>" class="card-img-top mb-2" alt="<?= htmlspecialchars($row['name']) ?>" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/' + (this.getAttribute('src') || '');">
               <div class="card-body d-flex flex-column justify-content-between">
                 <h3 class="card-title"><?= htmlspecialchars($row['name']) ?></h3>
                 <p class="mb-1"><strong><?= htmlspecialchars($row['main_category']) ?></strong> | <?= htmlspecialchars($row['sub_category']) ?></p>

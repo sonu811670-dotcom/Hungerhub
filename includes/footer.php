@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="d-flex align-items-center mb-3">
-                    <img src="images/logo.png" alt="HungerHub Logo" width="40" height="40" class="me-2" />
+                    <img src="images/logo.png" alt="HungerHub Logo" width="40" height="40" class="me-2" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/logo.png';" />
                     <span class="fw-bold text-warning fs-4">HungerHub</span>
                 </div>
                 <p class="text-light">Delicious food delivered fast to your doorstep. Experience the best flavors from local restaurants with just a few clicks.</p>
