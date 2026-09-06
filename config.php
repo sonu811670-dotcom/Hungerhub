@@ -50,9 +50,13 @@ $is_local_env = in_array($_SERVER['SERVER_NAME'] ?? '', ['localhost', '127.0.0.1
     || (php_sapi_name() === 'cli')
     || str_starts_with($_SERVER['HTTP_HOST'] ?? '', 'localhost')
     || str_starts_with($_SERVER['HTTP_HOST'] ?? '', '127.0.0.1')
+    || str_starts_with($_SERVER['HTTP_HOST'] ?? '', '192.168.')
+    || str_starts_with($_SERVER['HTTP_HOST'] ?? '', '10.')
     || str_contains($_SERVER['HTTP_HOST'] ?? '', 'ngrok')
     || str_contains($_SERVER['HTTP_HOST'] ?? '', 'pinggy')
-    || str_contains($_SERVER['HTTP_HOST'] ?? '', 'localhost.run');
+    || str_contains($_SERVER['HTTP_HOST'] ?? '', 'localhost.run')
+    || str_contains($_SERVER['HTTP_HOST'] ?? '', 'lhr.life')
+    || str_contains($_SERVER['HTTP_HOST'] ?? '', 'trycloudflare');
 
 if ($is_local_env) {
     define('DB_HOST', 'localhost');
