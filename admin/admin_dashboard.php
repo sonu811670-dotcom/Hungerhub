@@ -162,6 +162,9 @@ while ($row = $status_result->fetch_assoc()) {
           <a class="nav-link" href="payments.php">
             <i class="fas fa-credit-card me-2"></i>Payments
           </a>
+          <a class="nav-link" href="coupons.php">
+            <i class="fas fa-ticket-alt me-2"></i>Coupons
+          </a>
           <a class="nav-link" href="customers.php">
             <i class="fas fa-users me-2"></i>Customers
           </a>

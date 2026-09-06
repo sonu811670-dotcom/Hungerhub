@@ -191,7 +191,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <h4 class="fw-bold mb-3">Call Us</h4>
                         <p class="text-muted mb-3">Speak directly with our customer service team</p>
-                        <p class="fs-5 fw-bold text-primary">+1 (555) 123-4567</p>
+                        <p class="fs-5 fw-bold text-primary">+91 8603972526</p>
                         <p class="text-muted">Available 24/7</p>
                     </div>
                 </div>
@@ -215,7 +215,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <h4 class="fw-bold mb-3">Visit Us</h4>
                         <p class="text-muted mb-3">Come see us at our main office</p>
-                        <p class="fs-6 fw-bold">123 Food Street<br>Delicious City, DC 12345</p>
+                        <p class="fs-6 fw-bold">Virandavan Nagar road no.1<br>Ranchi,JH 834005</p>
                         <p class="text-muted">Mon-Fri, 9AM-6PM</p>
                     </div>
                 </div>
@@ -301,7 +301,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h3 class="fw-bold mb-4">Find Us Here</h3>
                     <div class="map-container">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.036!2d-74.309!3d40.697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sus!4v1635959015"
+                            src="https://maps.google.com/maps?q=Ranchi&t=&z=13&ie=UTF8&iwloc=&output=embed"
                             width="100%"
                             height="400"
                             style="border:0;"
@@ -372,7 +372,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </h3>
                                 <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                                     <div class="accordion-body">
-                                        Delivery fees start at $2.99 and may vary based on distance and demand. Free delivery is available for orders over $25!
+                                        Delivery fees start at Rs.12 and may vary based on distance and demand. Free delivery is available for orders over Rs.250!
                                     </div>
                                 </div>
                             </div>

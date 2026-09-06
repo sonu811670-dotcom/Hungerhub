@@ -117,13 +117,23 @@ $result = $conn->query("SELECT * FROM orders WHERE user_id = $user_id ORDER BY c
                                     </div>
                                 <?php endif; ?>
                             </div>
-                            <div class="card-footer d-flex justify-content-between align-items-center">
-                                <div>
-                                    <strong class="text-success">₹<?= number_format($order['total'], 2) ?></strong>
+                            <div class="card-footer bg-white">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div>
+                                        <strong class="text-success fs-5">₹<?= number_format($order['total'], 2) ?></strong>
+                                    </div>
+                                    <small class="text-muted">
+                                        <?= date('M j, Y g:i A', strtotime($order['created_at'])) ?>
+                                    </small>
                                 </div>
-                                <small class="text-muted">
-                                    <?= date('M j, Y g:i A', strtotime($order['created_at'])) ?>
-                                </small>
+                                <div class="d-flex gap-2">
+                                    <a href="track_order.php?id=<?= $order['id'] ?>" class="btn btn-warning btn-sm flex-fill fw-semibold">
+                                        <i class="fas fa-satellite-dish me-1"></i>Track Live
+                                    </a>
+                                    <a href="invoice.php?id=<?= $order['id'] ?>" class="btn btn-outline-secondary btn-sm flex-fill" target="_blank">
+                                        <i class="fas fa-file-invoice me-1"></i>Invoice
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -57,7 +57,7 @@ $payment_methods = [
         'processing_time' => 'Instant'
     ],
     'RAZORPAY' => [
-        'enabled' => false, // Disabled - only UPI through direct UPI option
+        'enabled' => true, // Real Online Gateway (UPI, Cards, Netbanking)
         'name' => 'Razorpay',
         'description' => 'Pay securely with UPI, Cards, Netbanking & Wallets',
         'icon' => 'fas fa-credit-card',

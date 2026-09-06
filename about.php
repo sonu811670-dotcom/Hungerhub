@@ -272,8 +272,8 @@ require 'db.php';
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="team-card text-center p-4">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face" alt="John Smith" class="team-img mb-3">
-                        <h4 class="fw-bold">John Smith</h4>
+                        <img src="images/ceo.jpeg" alt="prakash chettiyar" class="team-img mb-3">
+                        <h4 class="fw-bold">prakash chettiyar</h4>
                         <p class="text-warning fw-bold">CEO & Founder</p>
                         <p class="text-muted">Passionate about connecting people with great food. 10+ years in food industry.</p>
                         <div class="social-links">
@@ -286,8 +286,8 @@ require 'db.php';
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="team-card text-center p-4">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face" alt="Sarah Johnson" class="team-img mb-3">
-                        <h4 class="fw-bold">Sarah Johnson</h4>
+                        <img src="images/Sonu.jpeg" alt="Sonu kumar" class="team-img mb-3">
+                        <h4 class="fw-bold">Sonu kumar</h4>
                         <p class="text-warning fw-bold">Head of Operations</p>
                         <p class="text-muted">Ensures smooth operations and exceptional customer service across all locations.</p>
                         <div class="social-links">
@@ -300,8 +300,8 @@ require 'db.php';
 
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="team-card text-center p-4">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face" alt="Mike Chen" class="team-img mb-3">
-                        <h4 class="fw-bold">Mike Chen</h4>
+                        <img src="images/head.jpeg" alt="Surasti Sachdev" class="team-img mb-3">
+                        <h4 class="fw-bold">Surasti Sachdev</h4>
                         <p class="text-warning fw-bold">Head Chef Partner</p>
                         <p class="text-muted">Culinary expert who ensures all our partner restaurants meet our quality standards.</p>
                         <div class="social-links">

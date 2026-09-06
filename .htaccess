@@ -1,0 +1,11 @@
+﻿# Prevent directory listing
+Options -Indexes
+
+# Set default index file
+DirectoryIndex index.php index.html
+
+# Prevent direct access to SQL files, markdown docs, and git files
+<FilesMatch "\.(sql|md|log|ini|git.*)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

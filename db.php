@@ -1,11 +1,4 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "hungerhub";
-
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// Bridge to centralized commercial configuration
+require_once __DIR__ . '/config.php';
 ?>

@@ -364,7 +364,7 @@ require 'db.php';
           <form action="contact_process.php" method="POST">
             <div class="mb-3">
               <label class="form-label">Your Name</label>
-              <input type="text" name="name" class="form-control" placeholder="John Doe" required />
+              <input type="text" name="name" class="form-control" placeholder="Sonu Kumar" required />
             </div>
             <div class="mb-3">
               <label class="form-label">Email Address</label>
@@ -410,6 +410,26 @@ require 'db.php';
   <script>
     AOS.init();
   </script>
+<div style="width:300px;margin:auto;text-align:center;">
+  <h3>Ask HungerHub AI</h3>
+  <input id="userInput" type="text" placeholder="Ask me about food..." style="width:80%;">
+  <button onclick="sendMessage()">Send</button>
+  <div id="chatResponse" style="margin-top:10px;"></div>
+</div>
+
+<script>
+async function sendMessage() {
+  const message = document.getElementById('userInput').value;
+  const response = await fetch('chatbot.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'message=' + encodeURIComponent(message)
+  });
+  const text = await response.text();
+  document.getElementById('chatResponse').innerText = text;
+}
+</script>
+
 </body>
 
 </html>

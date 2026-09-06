@@ -269,6 +269,9 @@ $recent_refunds = $conn->query($refunds_query);
                     <a class="nav-link" href="customers.php">
                         <i class="fas fa-users me-2"></i>Customers
                     </a>
+                    <a class="nav-link" href="coupons.php">
+                        <i class="fas fa-ticket-alt me-2"></i>Coupons
+                    </a>
                     <a class="nav-link" href="messages.php">
                         <i class="fas fa-envelope me-2"></i>Messages
                     </a>

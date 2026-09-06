@@ -2,6 +2,7 @@
 session_start();
 require 'db.php';
 require 'payment_config.php';
+require 'includes/coupon_utils.php';
 
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -15,24 +16,45 @@ if (empty($cart)) {
   exit();
 }
 
-$total = 0;
+$subtotal = 0;
 $items_summary = [];
 
-// Calculate cart total and items
-$ids = implode(',', array_keys($cart));
-$query = $conn->query("SELECT * FROM menu_items WHERE id IN ($ids)");
+// Calculate cart subtotal and items
+$ids = array_map('intval', array_keys($cart));
+$ids = array_filter($ids, fn($v) => $v > 0);
+$id_list = implode(',', $ids);
+$query = $conn->query("SELECT * FROM menu_items WHERE id IN ($id_list)");
 while ($item = $query->fetch_assoc()) {
   $id = $item['id'];
   $qty = $cart[$id]['quantity'];
-  $subtotal = $item['price'] * $qty;
-  $total += $subtotal;
+  $line_subtotal = $item['price'] * $qty;
+  $subtotal += $line_subtotal;
   $items_summary[] = "{$item['name']} (x$qty)";
 }
+
+// Coupon calculation
+$coupon_code = $_SESSION['coupon_code'] ?? null;
+$coupon_discount_percent = 0.0;
+$coupon_discount_amount = 0.0;
+
+if (!empty($coupon_code) && $subtotal > 0) {
+  $coupon_code = hh_normalize_coupon_code((string)$coupon_code);
+  $coupon = hh_get_coupon_by_code($conn, $coupon_code);
+  if ($coupon && hh_is_coupon_valid($coupon)) {
+    $coupon_discount_percent = (float)$coupon['discount_percent'];
+    $coupon_discount_amount = hh_calculate_discount_amount((float)$subtotal, $coupon_discount_percent);
+  } else {
+    unset($_SESSION['coupon_code']);
+    $coupon_code = null;
+  }
+}
+
+$discounted_subtotal = max(0, (float)$subtotal - (float)$coupon_discount_amount);
 
 // Get available payment methods for this order
 $available_payment_methods = [];
 foreach (getPaymentMethods() as $method => $config) {
-  if (isPaymentMethodAvailable($method, $total)) {
+  if (isPaymentMethodAvailable($method, $discounted_subtotal)) {
     $available_payment_methods[$method] = $config;
   }
 }
@@ -45,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $user_id = $_SESSION['user_id'];
 
   // Validate payment method
-  if (!isPaymentMethodAvailable($payment_method, $total)) {
+  if (!isPaymentMethodAvailable($payment_method, $discounted_subtotal)) {
     $_SESSION['error'] = "Selected payment method is not available for this order.";
     header("Location: checkout.php");
     exit();
@@ -54,22 +76,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $item_list = implode(", ", $items_summary);
 
   // Calculate payment fee
-  $payment_fee = calculatePaymentFee($total, $payment_method);
-  $final_total = $total + $payment_fee;
+  $payment_fee = calculatePaymentFee($discounted_subtotal, $payment_method);
+  $final_total = $discounted_subtotal + $payment_fee;
 
   // Insert into orders with payment information
   $stmt = $conn->prepare("
-        INSERT INTO orders (
-            user_id, customer_name, phone, address, items, total, 
-            payment_method, payment_status, payment_amount, currency
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO orders (
+        user_id, customer_name, phone, address, items, total, 
+        payment_method, payment_status, payment_amount, currency,
+        coupon_code, coupon_discount_percent, coupon_discount_amount
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ");
 
   $payment_status = ($payment_method === 'COD') ? 'Pending' : 'Pending';
   $currency = DEFAULT_CURRENCY;
 
   $stmt->bind_param(
-    "issssdssds",
+    "issssdssdssdd",
     $user_id,
     $name,
     $phone,
@@ -79,18 +102,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $payment_method,
     $payment_status,
     $final_total,
-    $currency
+    $currency,
+    $coupon_code,
+    $coupon_discount_percent,
+    $coupon_discount_amount
   );
 
   if ($stmt->execute()) {
     $order_id = $conn->insert_id;
 
     // Handle different payment methods
+    $_SESSION['last_order_id'] = $order_id;
     if ($payment_method === 'COD') {
       // COD - redirect to success page
       unset($_SESSION['cart']);
+      unset($_SESSION['coupon_code']);
+      $_SESSION['payment_method'] = 'COD';
       $_SESSION['success'] = "Your order has been placed successfully! You can pay cash on delivery.";
-      header("Location: order_success.php");
+      header("Location: order_success.php?id=" . $order_id);
       exit();
     } else if ($payment_method === 'UPI') {
       // UPI - redirect to UPI payment page
@@ -99,11 +128,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       header("Location: payment_upi.php");
       exit();
     } else if ($payment_method === 'RAZORPAY') {
-      // Razorpay - disabled but keeping for reference
-      $_SESSION['error'] = "Razorpay payment is currently disabled. Please use UPI or Cash on Delivery.";
-    } else if ($payment_method === 'PAYPAL') {
-      // PayPal - disabled but keeping for reference
-      $_SESSION['error'] = "PayPal payment is currently disabled. Please use UPI or Cash on Delivery.";
+      // Razorpay - real online gateway (UPI, Cards, Netbanking)
+      $_SESSION['pending_order_id'] = $order_id;
+      $_SESSION['pending_amount'] = $final_total;
+      header("Location: payment_razorpay.php?id=" . $order_id);
+      exit();
     }
   } else {
     $_SESSION['error'] = "Failed to place order. Please try again.";
@@ -154,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <h5 class="mb-3"><i class="fas fa-credit-card"></i> Select Payment Method</h5>
             <?php foreach ($available_payment_methods as $method => $config): ?>
               <?php
-              $fee = calculatePaymentFee($total, $method);
+              $fee = calculatePaymentFee($discounted_subtotal, $method);
               $fee_text = $fee > 0 ? " (+₹" . number_format($fee, 2) . " fee)" : "";
               ?>
               <div class="card mb-2 payment-method-card" data-method="<?= $method ?>" data-fee="<?= $fee ?>">
@@ -197,15 +226,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           </div>
           <div class="card-body">
             <?php
-            $ids = implode(',', array_keys($cart));
-            $result = $conn->query("SELECT * FROM menu_items WHERE id IN ($ids)");
+            $ids = array_map('intval', array_keys($cart));
+            $ids = array_filter($ids, fn($v) => $v > 0);
+            $id_list = implode(',', $ids);
+            $result = $conn->query("SELECT * FROM menu_items WHERE id IN ($id_list)");
             $cartItems = [];
-            $total = 0;
+            $summary_subtotal = 0;
             while ($item = $result->fetch_assoc()):
               $id = $item['id'];
               $qty = $cart[$id]['quantity'];
-              $subtotal = $item['price'] * $qty;
-              $total += $subtotal;
+              $summary_line_subtotal = $item['price'] * $qty;
+              $summary_subtotal += $summary_line_subtotal;
               $cartItems[] = [
                 'name' => $item['name'],
                 'price' => $item['price'],
@@ -214,14 +245,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ?>
               <div class="d-flex justify-content-between mb-2">
                 <span><?= htmlspecialchars($item['name']) ?> x <?= $qty ?></span>
-                <span>₹<?= number_format($subtotal, 2) ?></span>
+                <span>₹<?= number_format($summary_line_subtotal, 2) ?></span>
               </div>
             <?php endwhile; ?>
             <hr>
             <div class="d-flex justify-content-between">
               <strong>Subtotal:</strong>
-              <strong id="subtotal">₹<?= number_format($total, 2) ?></strong>
+              <strong id="subtotal">₹<?= number_format($subtotal, 2) ?></strong>
             </div>
+            <?php if (!empty($coupon_code) && $coupon_discount_amount > 0): ?>
+              <div class="d-flex justify-content-between text-muted">
+                <span>Coupon (<?= htmlspecialchars($coupon_code) ?>):</span>
+                <span>-₹<?= number_format($coupon_discount_amount, 2) ?></span>
+              </div>
+            <?php endif; ?>
             <div class="d-flex justify-content-between text-muted" id="payment-fee-row" style="display: none;">
               <span>Payment Fee:</span>
               <span id="payment-fee">₹0.00</span>
@@ -229,7 +266,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <hr>
             <div class="d-flex justify-content-between">
               <strong>Total:</strong>
-              <strong class="text-success" id="final-total">₹<?= number_format($total, 2) ?></strong>
+              <strong class="text-success" id="final-total">₹<?= number_format($discounted_subtotal, 2) ?></strong>
             </div>
           </div>
         </div>
@@ -255,7 +292,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $('input[name="payment_method"]').change(function() {
         var method = $(this).val();
         var fee = parseFloat($('.payment-method-card[data-method="' + method + '"]').data('fee'));
-        var subtotal = <?= $total ?>;
+        var subtotal = <?= $discounted_subtotal ?>;
         var finalTotal = subtotal + fee;
 
         // Update fee display
