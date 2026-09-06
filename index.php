@@ -94,41 +94,35 @@ require 'db.php';
         </div>
       </div>
 
-      <!-- Animated Cards Row -->
-      <div class="row justify-content-center text-center g-4" data-aos="zoom-in">
-        <div class="col-md-4">
-          <div class="card1">
-            <div class="first-content">
-              <span>🍕 Fresh & Fast</span>
+      <!-- Feature Cards Row -->
+      <div class="row justify-content-center text-center g-4">
+        <div class="col-md-4 col-sm-6">
+          <div class="feature-box p-4 h-100 bg-white rounded-4 shadow-sm border border-light text-center">
+            <div class="feature-icon-badge mb-3 mx-auto">
+              <i class="fas fa-pizza-slice text-warning fa-2x"></i>
             </div>
-            <div class="second-content text-center flex-column">
-              <span class="mb-2">🍕 Fresh & Fast</span>
-              <p class="px-3">We prepare your food with the freshest ingredients and deliver it piping hot — right on time.</p>
-            </div>
+            <h4 class="fw-bold mb-2">Fresh & Fast</h4>
+            <p class="text-muted small mb-0">We prepare your food with the freshest ingredients and deliver it piping hot — right on time.</p>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card1">
-            <div class="first-content">
-              <span>👨‍🍳 Expert Chefs</span>
+        <div class="col-md-4 col-sm-6">
+          <div class="feature-box p-4 h-100 bg-white rounded-4 shadow-sm border border-light text-center">
+            <div class="feature-icon-badge mb-3 mx-auto">
+              <i class="fas fa-hat-chef text-warning fa-2x" style="display:inline-block;"><i class="fas fa-user text-warning"></i></i>
             </div>
-            <div class="second-content text-center flex-column">
-              <span class="mb-2">👨‍🍳 Expert Chefs</span>
-              <p class="px-3">Our kitchen is run by professionals who ensure every bite meets our quality standards.</p>
-            </div>
+            <h4 class="fw-bold mb-2">Expert Chefs</h4>
+            <p class="text-muted small mb-0">Our kitchen is run by professionals who ensure every bite meets our top quality standards.</p>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card1">
-            <div class="first-content">
-              <span>📦 Safe Delivery</span>
+        <div class="col-md-4 col-sm-6">
+          <div class="feature-box p-4 h-100 bg-white rounded-4 shadow-sm border border-light text-center">
+            <div class="feature-icon-badge mb-3 mx-auto">
+              <i class="fas fa-shipping-fast text-warning fa-2x"></i>
             </div>
-            <div class="second-content text-center flex-column">
-              <span class="mb-2">📦 Safe Delivery</span>
-              <p class="px-3">Your food is delivered with safety and care by our trained delivery partners.</p>
-            </div>
+            <h4 class="fw-bold mb-2">Safe Delivery</h4>
+            <p class="text-muted small mb-0">Your food is securely sealed and delivered with care by our trained delivery partners.</p>
           </div>
         </div>
       </div>
@@ -152,7 +146,7 @@ require 'db.php';
             <div class="card-body">
               <h3>Cheese Pizza</h3>
               <p>Delicious cheese loaded pizza with Italian herbs.</p><br>
-              <p class="fw-bold text-success">₹199</p>
+              <p class="fw-bold text-success">â‚¹199</p>
               <a href="cart.php" class="btn btn-danger w-100">
                 <i class="fa-solid fa-cart-shopping me-2"></i> Add to Cart
               </a>
@@ -167,7 +161,7 @@ require 'db.php';
             <div class="card-body">
               <h3>Chhole Bhature</h3>
               <p>Authentic North Indian delight served with spicy chana and fluffy bhature.</p>
-              <p class="fw-bold text-success">₹149</p>
+              <p class="fw-bold text-success">â‚¹149</p>
               <a href="cart.php" class="btn btn-danger w-100">
                 <i class="fa-solid fa-cart-shopping me-2"></i> Add to Cart
               </a>
@@ -184,7 +178,7 @@ require 'db.php';
             <div class="card-body">
               <h3>Chicken Biryani</h3>
               <p>Spiced and flavorful Hyderabadi-style biryani.</p><br>
-              <p class="fw-bold text-success">₹249</p>
+              <p class="fw-bold text-success">â‚¹249</p>
               <a href="cart.php" class="btn btn-danger w-100">
                 <i class="fa-solid fa-cart-shopping me-2"></i> Add to Cart
               </a>
@@ -215,7 +209,7 @@ require 'db.php';
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star-half-alt text-warning"></i>
             </div>
-            <h6 class="mt-3 fw-bold">– Rahul Sinha</h6>
+            <h6 class="mt-3 fw-bold">â€“ Rahul Sinha</h6>
           </div>
         </div>
 
@@ -230,7 +224,7 @@ require 'db.php';
               <i class="fas fa-star text-warning"></i>
               <i class="far fa-star text-warning"></i>
             </div>
-            <h6 class="mt-3 fw-bold">– Sneha Raj</h6>
+            <h6 class="mt-3 fw-bold">â€“ Sneha Raj</h6>
           </div>
         </div>
 
@@ -245,7 +239,7 @@ require 'db.php';
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
             </div>
-            <h6 class="mt-3 fw-bold">– Vikash Kumar</h6>
+            <h6 class="mt-3 fw-bold">â€“ Vikash Kumar</h6>
           </div>
         </div>
       </div>
@@ -400,7 +394,6 @@ require 'db.php';
       </div>
     </div>
   </section>
-  <!-- Contact Section End -->
 
   <?php include 'includes/footer.php'; ?>
 
@@ -408,7 +401,10 @@ require 'db.php';
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({
+      once: true,
+      disable: 'mobile'
+    });
+  </script>
 </body>
-
 </html>

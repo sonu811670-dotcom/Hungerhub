@@ -21,14 +21,24 @@ $user_name = $_SESSION['user_name'] ?? '';
 
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <div class="container">
+    <div class="container d-flex align-items-center justify-content-between">
         <a class="navbar-brand d-flex align-items-center" href="index.php">
-            <img src="images/logo.png" alt="HungerHub Logo" width="40" height="40" class="me-2" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/logo.png';" />
+            <img src="images/logo.png" alt="HungerHub Logo" width="38" height="38" class="me-2" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/logo.png';" />
             <span class="fw-bold text-warning">HungerHub</span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+
+        <!-- Mobile Header Actions: Direct Cart shortcut + Hamburger button -->
+        <div class="d-flex align-items-center d-lg-none gap-2">
+            <a href="cart.php" class="btn btn-outline-warning btn-sm position-relative px-2 py-1 text-warning" title="Shopping Cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:0.62rem; <?= $cart_count > 0 ? '' : 'display:none;' ?>">
+                    <?= $cart_count ?>
+                </span>
+            </a>
+            <button class="navbar-toggler p-2 border-warning" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">

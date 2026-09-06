@@ -434,4 +434,66 @@
         });
     }
 </script>
+
+<?php
+$footer_page = basename($_SERVER['PHP_SELF'], '.php');
+$footer_cart = isset($_SESSION['cart']) ? array_sum(array_column($_SESSION['cart'], 'quantity')) : 0;
+$footer_auth = isset($_SESSION['user_id']);
+?>
+
+<!-- Native-Style Mobile Bottom App Bar (Only visible on screens < 992px) -->
+<div class="mobile-bottom-bar d-lg-none fixed-bottom bg-dark py-2 px-2 shadow-lg border-top border-secondary border-opacity-25" style="z-index: 9980; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background: rgba(26, 30, 35, 0.95) !important;">
+    <div class="row g-0 text-center align-items-center">
+        <div class="col-3">
+            <a href="index.php" class="text-decoration-none d-block <?= $footer_page === 'index' ? 'text-warning fw-bold' : 'text-light text-opacity-75' ?>">
+                <i class="fas fa-home fs-5 d-block mb-1"></i>
+                <span style="font-size: 0.72rem; letter-spacing: 0.2px;">Home</span>
+            </a>
+        </div>
+        <div class="col-3">
+            <a href="menu.php" class="text-decoration-none d-block <?= $footer_page === 'menu' ? 'text-warning fw-bold' : 'text-light text-opacity-75' ?>">
+                <i class="fas fa-utensils fs-5 d-block mb-1"></i>
+                <span style="font-size: 0.72rem; letter-spacing: 0.2px;">Menu</span>
+            </a>
+        </div>
+        <div class="col-3">
+            <a href="cart.php" class="text-decoration-none d-block position-relative <?= $footer_page === 'cart' ? 'text-warning fw-bold' : 'text-light text-opacity-75' ?>">
+                <div class="position-relative d-inline-block">
+                    <i class="fas fa-shopping-bag fs-5 d-block mb-1"></i>
+                    <span id="bottomNavCartBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem; padding: 0.25em 0.5em; <?= $footer_cart > 0 ? '' : 'display:none;' ?>">
+                        <?= $footer_cart ?>
+                    </span>
+                </div>
+                <span class="d-block" style="font-size: 0.72rem; letter-spacing: 0.2px;">Cart</span>
+            </a>
+        </div>
+        <div class="col-3">
+            <a href="<?= $footer_auth ? 'user/profile.php' : 'user/login.php' ?>" class="text-decoration-none d-block <?= in_array($footer_page, ['login', 'profile', 'register', 'order_history']) ? 'text-warning fw-bold' : 'text-light text-opacity-75' ?>">
+                <i class="fas fa-user-circle fs-5 d-block mb-1"></i>
+                <span style="font-size: 0.72rem; letter-spacing: 0.2px;"><?= $footer_auth ? 'Account' : 'Login' ?></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+@media (max-width: 991.98px) {
+    body {
+        padding-bottom: 74px !important;
+    }
+    #hungerbot-launcher {
+        bottom: 78px !important;
+        right: 16px !important;
+        padding: 9px 15px !important;
+        font-size: 0.82rem !important;
+    }
+    #hungerbot-window {
+        bottom: 132px !important;
+        right: 12px !important;
+        left: 12px !important;
+        width: auto !important;
+        max-width: 100% !important;
+    }
+}
+</style>
 <!-- Footer End -->
