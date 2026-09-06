@@ -2,7 +2,6 @@
 session_start();
 require 'db.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +9,7 @@ require 'db.php';
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>HungerHub - Order Delicious Food Online</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -39,23 +37,23 @@ require 'db.php';
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="images/slide1.png" class="d-block w-100" alt="Delicious Dosa" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/slide1.png';" />
-        <div class="carousel-caption d-none d-md-block">
-          <h2 class="fw-bold text-shadow">Crispy dosa with flavorful chutneys</h2>
-          <p>Straight to your doorstep.</p>
+        <div class="carousel-caption">
+          <h2 class="fw-bold text-shadow">Crispy Dosa with Flavorful Chutneys</h2>
+          <p>Delivered fresh and crispy right to your doorstep.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="images/slide2.png" class="d-block w-100" alt="Burger & Fries" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/slide2.png';" />
-        <div class="carousel-caption d-none d-md-block">
+        <div class="carousel-caption">
           <h2 class="fw-bold text-shadow">Juicy Burgers & Crispy Fries</h2>
-          <p>The combo that everyone loves.</p>
+          <p>The ultimate comfort combo everyone loves.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img src="images/slide3.png" class="d-block w-100" alt="Biryani Special" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/slide3.png';" />
-        <div class="carousel-caption d-none d-md-block">
-          <h2 class="fw-bold text-shadow">Authentic Biryani Flavors</h2>
-          <p>Spiced to perfection, every time.</p>
+        <div class="carousel-caption">
+          <h2 class="fw-bold text-shadow">Authentic Royal Biryani Flavors</h2>
+          <p>Slow-cooked with aromatic spices, every single time.</p>
         </div>
       </div>
     </div>
@@ -74,29 +72,27 @@ require 'db.php';
     <div class="container">
 
       <!-- Section Heading -->
-      <div class="text-center mb-5" data-aos="fade-in-right">
+      <div class="text-center mb-5" data-aos="fade-up">
         <h1 class="fw-bold mb-3">About <span class="text-warning">HungerHub</span></h1>
-        <p class="lead">HungerHub is your one-stop online destination for ordering delicious food anytime, anywhere.</p>
+        <p class="lead text-muted mx-auto" style="max-width: 680px;">HungerHub is your one-stop online destination for ordering delicious, restaurant-quality food anytime, anywhere.</p>
       </div>
 
       <!-- Row: Image + Intro -->
-      <div class="row align-items-center mb-5">
-        <div class="col-md-6 mb-4 mb-md-0" data-aos="fade-right">
-          <img src="images/about_us.png" alt="About HungerHub" class="img-fluid rounded shadow" id="about_img" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/about_us.png';" />
+      <div class="row align-items-center mb-5 g-4">
+        <div class="col-md-6 text-center" data-aos="fade-up">
+          <img src="images/about_us.png" alt="About HungerHub" class="img-fluid rounded-4 shadow" id="about_img" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/about_us.png';" />
         </div>
-        <div class="col-md-6" data-aos="fade-left">
+        <div class="col-md-6" data-aos="fade-up">
           <h2 class="fw-bold mb-3 why-heading">Why Choose <span class="text-warning">HungerHub</span>?</h2>
-          <hr><br>
-          <p>At HungerHub, we're passionate about delivering food that not only satisfies your hunger but also excites your taste buds. We carefully curate a variety of cuisines and partner with the best local kitchens to bring you quality and flavor in every bite.</p>
-          <p>With an easy-to-use interface, real-time order tracking, and seamless payment options, we make food ordering enjoyable and hassle-free. Whether you're ordering lunch at the office or planning a family dinner, HungerHub has you covered.</p>
-          <hr>
-          <a href="#menu" class="btn btn-warning mt-3">Explore Menu</a>
+          <p class="mb-3">At HungerHub, we're passionate about delivering food that not only satisfies your hunger but also excites your taste buds. We carefully curate a variety of cuisines and partner with the best local kitchens to bring you quality and flavor in every bite.</p>
+          <p class="mb-4">With an easy-to-use interface, real-time order tracking, and seamless payment options, we make food ordering enjoyable and hassle-free. Whether you're ordering lunch at the office or planning a family dinner, HungerHub has you covered.</p>
+          <a href="#menu" class="btn btn-warning px-4 py-2 fw-semibold shadow-sm">Explore Menu &rarr;</a>
         </div>
       </div>
 
       <!-- Feature Cards Row -->
       <div class="row justify-content-center text-center g-4">
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
           <div class="feature-box p-4 h-100 bg-white rounded-4 shadow-sm border border-light text-center">
             <div class="feature-icon-badge mb-3 mx-auto">
               <i class="fas fa-pizza-slice text-warning fa-2x"></i>
@@ -106,17 +102,17 @@ require 'db.php';
           </div>
         </div>
 
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
           <div class="feature-box p-4 h-100 bg-white rounded-4 shadow-sm border border-light text-center">
             <div class="feature-icon-badge mb-3 mx-auto">
-              <i class="fas fa-hat-chef text-warning fa-2x" style="display:inline-block;"><i class="fas fa-user text-warning"></i></i>
+              <i class="fas fa-utensils text-warning fa-2x"></i>
             </div>
             <h4 class="fw-bold mb-2">Expert Chefs</h4>
             <p class="text-muted small mb-0">Our kitchen is run by professionals who ensure every bite meets our top quality standards.</p>
           </div>
         </div>
 
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300">
           <div class="feature-box p-4 h-100 bg-white rounded-4 shadow-sm border border-light text-center">
             <div class="feature-icon-badge mb-3 mx-auto">
               <i class="fas fa-shipping-fast text-warning fa-2x"></i>
@@ -129,208 +125,217 @@ require 'db.php';
 
     </div>
   </section>
-
-
   <!-- About Section End -->
 
   <!-- Menu Section Start -->
   <section class="py-5" id="menu">
     <div class="container">
-      <h2 class="text-center mb-5 fw-bold" data-aos="fade-down">Our <span class="text-warning">Menu</span></h2>
+      <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">Our Featured <span class="text-warning">Menu</span></h2>
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center g-4">
         <!-- Cheese Pizza -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm text-center">
+        <div class="col-md-4 col-sm-6">
+          <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden text-center">
             <img src="images/cheese_pizza.png" class="card-img-top mx-auto" alt="Cheese Pizza" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/cheese_pizza.png';" />
-            <div class="card-body">
-              <h3>Cheese Pizza</h3>
-              <p>Delicious cheese loaded pizza with Italian herbs.</p><br>
-              <p class="fw-bold text-success">â‚¹199</p>
-              <a href="cart.php" class="btn btn-danger w-100">
-                <i class="fa-solid fa-cart-shopping me-2"></i> Add to Cart
-              </a>
+            <div class="card-body d-flex flex-column p-4">
+              <h3 class="fw-bold fs-5 mb-2">Cheese Pizza</h3>
+              <p class="text-muted small flex-grow-1 mb-3">Delicious cheese-loaded pizza with Italian herbs and crispy crust.</p>
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                <span class="fs-5 fw-bold text-success">&#8377;199</span>
+                <a href="cart.php" class="btn btn-danger btn-sm px-3 fw-semibold">
+                  <i class="fa-solid fa-cart-shopping me-1"></i> Add to Cart
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Chhole Bhature -->
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm text-center">
+        <div class="col-md-4 col-sm-6">
+          <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden text-center">
             <img src="images/chhole_bhature.png" class="card-img-top mx-auto" alt="Chhole Bhature" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/chhole_bhature.png';" />
-            <div class="card-body">
-              <h3>Chhole Bhature</h3>
-              <p>Authentic North Indian delight served with spicy chana and fluffy bhature.</p>
-              <p class="fw-bold text-success">â‚¹149</p>
-              <a href="cart.php" class="btn btn-danger w-100">
-                <i class="fa-solid fa-cart-shopping me-2"></i> Add to Cart
-              </a>
+            <div class="card-body d-flex flex-column p-4">
+              <h3 class="fw-bold fs-5 mb-2">Chhole Bhature</h3>
+              <p class="text-muted small flex-grow-1 mb-3">Authentic North Indian delight served with spicy chana and fluffy bhature.</p>
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                <span class="fs-5 fw-bold text-success">&#8377;149</span>
+                <a href="cart.php" class="btn btn-danger btn-sm px-3 fw-semibold">
+                  <i class="fa-solid fa-cart-shopping me-1"></i> Add to Cart
+                </a>
+              </div>
             </div>
           </div>
         </div>
-
 
         <!-- Chicken Biryani -->
-
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm text-center">
+        <div class="col-md-4 col-sm-6">
+          <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden text-center">
             <img src="images/chicken_biryani.png" class="card-img-top mx-auto" alt="Chicken Biryani" onerror="this.onerror=null; this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/images/chicken_biryani.png';" />
-            <div class="card-body">
-              <h3>Chicken Biryani</h3>
-              <p>Spiced and flavorful Hyderabadi-style biryani.</p><br>
-              <p class="fw-bold text-success">â‚¹249</p>
-              <a href="cart.php" class="btn btn-danger w-100">
-                <i class="fa-solid fa-cart-shopping me-2"></i> Add to Cart
-              </a>
+            <div class="card-body d-flex flex-column p-4">
+              <h3 class="fw-bold fs-5 mb-2">Chicken Biryani</h3>
+              <p class="text-muted small flex-grow-1 mb-3">Spiced and flavorful Hyderabadi-style biryani prepared with tender pieces.</p>
+              <div class="d-flex align-items-center justify-content-between pt-2 border-top">
+                <span class="fs-5 fw-bold text-success">&#8377;249</span>
+                <a href="cart.php" class="btn btn-danger btn-sm px-3 fw-semibold">
+                  <i class="fa-solid fa-cart-shopping me-1"></i> Add to Cart
+                </a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="h-100 shadow-sm text-center">
-          <a href="menu.php"><button class="btn btn-primary ">View More</button></a>
+
+        <!-- Clean Full Width Row for View More -->
+        <div class="col-12 text-center mt-3 mb-2">
+          <a href="menu.php" class="btn btn-outline-primary px-4 py-2 rounded-pill fw-bold shadow-sm">
+            View Full Menu <i class="fas fa-arrow-right ms-1"></i>
+          </a>
         </div>
       </div>
     </div>
   </section>
   <!-- Menu Section End -->
+
+  <!-- Reviews Section Start -->
   <section class="py-5 bg-light" id="review">
     <div class="container">
-      <h2 class="text-center mb-5 fw-bold" data-aos="fade-down">
+      <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">
         What Our <span class="text-warning">Customers Say</span>
       </h2>
-      <div class="row text-center">
+      <div class="row text-center g-4">
         <!-- review 1 -->
-        <div class="col-md-4 mb-4" data-aos="fade-right">
-          <div class="review-card p-4 shadow rounded h-100">
-            <p>"Amazing food and super quick delivery! HungerHub never disappoints."</p>
-            <div class="rating my-2">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="review-card p-4 shadow-sm rounded-4 h-100 bg-white">
+            <p class="text-muted mb-3">"Amazing food and super quick delivery! HungerHub never disappoints."</p>
+            <div class="rating mb-2">
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star-half-alt text-warning"></i>
             </div>
-            <h6 class="mt-3 fw-bold">â€“ Rahul Sinha</h6>
+            <h6 class="mt-3 fw-bold text-dark">&mdash; Rahul Sinha</h6>
           </div>
         </div>
 
         <!-- review 2 -->
-        <div class="col-md-4 mb-4" data-aos="fade-up">
-          <div class="review-card p-4 shadow rounded h-100">
-            <p>"Love the app interface and the biryani is always top-notch!"</p>
-            <div class="rating my-2">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="review-card p-4 shadow-sm rounded-4 h-100 bg-white">
+            <p class="text-muted mb-3">"Love the app interface and the biryani is always top-notch!"</p>
+            <div class="rating mb-2">
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
               <i class="far fa-star text-warning"></i>
             </div>
-            <h6 class="mt-3 fw-bold">â€“ Sneha Raj</h6>
+            <h6 class="mt-3 fw-bold text-dark">&mdash; Sneha Raj</h6>
           </div>
         </div>
 
         <!-- review 3 -->
-        <div class="col-md-4 mb-4" data-aos="fade-left">
-          <div class="review-card p-4 shadow rounded h-100">
-            <p>"Affordable prices and great taste. My go-to food delivery site!"</p>
-            <div class="rating my-2">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="review-card p-4 shadow-sm rounded-4 h-100 bg-white">
+            <p class="text-muted mb-3">"Affordable prices and great taste. My go-to food delivery site!"</p>
+            <div class="rating mb-2">
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
               <i class="fas fa-star text-warning"></i>
             </div>
-            <h6 class="mt-3 fw-bold">â€“ Vikash Kumar</h6>
+            <h6 class="mt-3 fw-bold text-dark">&mdash; Vikash Kumar</h6>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- reviews end -->
-  <!-- facts -->
-  <section class="py-5 bg-light" id="stats">
+  <!-- Reviews Section End -->
+
+  <!-- Facts / Stats Section Start -->
+  <section class="py-5" id="stats">
     <div class="container">
-      <h2 class="text-center fw-bold mb-5" data-aos="fade-down">
+      <h2 class="text-center fw-bold mb-5" data-aos="fade-up">
         HungerHub <span class="text-warning">In Numbers</span>
       </h2>
       <div class="row text-center g-4">
 
         <!-- Stat 1 -->
-        <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
-          <div class="p-4 border rounded shadow-sm">
+        <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="p-4 border rounded-4 shadow-sm bg-white">
             <i class="fas fa-users fa-2x text-warning mb-2"></i>
             <h3 class="fw-bold">10K+</h3>
-            <p>Happy Customers</p>
+            <p class="text-muted mb-0">Happy Customers</p>
           </div>
         </div>
 
         <!-- Stat 2 -->
-        <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
-          <div class="p-4 border rounded shadow-sm">
+        <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="p-4 border rounded-4 shadow-sm bg-white">
             <i class="fas fa-utensils fa-2x text-warning mb-2"></i>
             <h3 class="fw-bold">250+</h3>
-            <p>Dishes Served</p>
+            <p class="text-muted mb-0">Dishes Served</p>
           </div>
         </div>
 
         <!-- Stat 3 -->
-        <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="300">
-          <div class="p-4 border rounded shadow-sm">
+        <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="p-4 border rounded-4 shadow-sm bg-white">
             <i class="fas fa-star fa-2x text-warning mb-2"></i>
             <h3 class="fw-bold">4.8</h3>
-            <p>Average Rating</p>
+            <p class="text-muted mb-0">Average Rating</p>
           </div>
         </div>
 
         <!-- Stat 4 -->
-        <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="400">
-          <div class="p-4 border rounded shadow-sm">
+        <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="p-4 border rounded-4 shadow-sm bg-white">
             <i class="fas fa-motorcycle fa-2x text-warning mb-2"></i>
             <h3 class="fw-bold">500+</h3>
-            <p>Deliveries Daily</p>
+            <p class="text-muted mb-0">Deliveries Daily</p>
           </div>
         </div>
 
       </div>
     </div>
   </section>
-
   <!-- facts end -->
+
   <!-- work start -->
-  <section class="py-5" id="how-it-works">
+  <section class="py-5 bg-light" id="how-it-works">
     <div class="container">
-      <h2 class="text-center mb-5 fw-bold" data-aos="fade-down">How <span class="text-warning">HungerHub</span> Works</h2>
+      <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">How <span class="text-warning">HungerHub</span> Works</h2>
       <div class="row text-center g-4">
 
         <!-- Step 1: Order -->
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-          <div class="step-card p-4 shadow rounded h-100">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="step-card p-4 shadow-sm rounded-4 h-100 bg-white">
             <div class="step-icon mb-3">
               <i class="fas fa-utensils fa-3x text-warning"></i>
             </div>
             <h5 class="fw-bold">1. Choose & Order</h5>
-            <p>Select your favorite dishes from our wide range of mouth-watering menus.</p>
+            <p class="text-muted mb-0">Select your favorite dishes from our wide range of mouth-watering menus.</p>
           </div>
         </div>
 
         <!-- Step 2: Cook -->
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-          <div class="step-card p-4 shadow rounded h-100">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="step-card p-4 shadow-sm rounded-4 h-100 bg-white">
             <div class="step-icon mb-3">
               <i class="fas fa-concierge-bell fa-3x text-warning"></i>
             </div>
             <h5 class="fw-bold">2. We Cook Fresh</h5>
-            <p>Our expert chefs prepare your order with the freshest ingredients.</p>
+            <p class="text-muted mb-0">Our expert chefs prepare your order with the freshest ingredients.</p>
           </div>
         </div>
 
         <!-- Step 3: Deliver -->
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
-          <div class="step-card p-4 shadow rounded h-100">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="step-card p-4 shadow-sm rounded-4 h-100 bg-white">
             <div class="step-icon mb-3">
               <i class="fas fa-motorcycle fa-3x text-warning"></i>
             </div>
             <h5 class="fw-bold">3. Safe Delivery</h5>
-            <p>Your food is delivered hot & safe by our reliable delivery partners.</p>
+            <p class="text-muted mb-0">Your food is delivered hot & safe by our reliable delivery partners.</p>
           </div>
         </div>
 
@@ -341,7 +346,7 @@ require 'db.php';
   <!-- Contact Section Start -->
   <section class="py-5" id="contact">
     <div class="container">
-      <h2 class="text-center mb-5 fw-bold" data-aos="fade-down">Get in Touch with <span class="text-warning">HungerHub</span></h2>
+      <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">Get in Touch with <span class="text-warning">HungerHub</span></h2>
 
       <?php if (isset($_SESSION['success'])): ?>
         <div class="alert alert-success text-center"><?php echo $_SESSION['success'];
@@ -357,36 +362,36 @@ require 'db.php';
         <div class="col-md-6">
           <form action="contact_process.php" method="POST">
             <div class="mb-3">
-              <label class="form-label">Your Name</label>
+              <label class="form-label fw-semibold">Your Name</label>
               <input type="text" name="name" class="form-control" placeholder="Sonu Kumar" required />
             </div>
             <div class="mb-3">
-              <label class="form-label">Email Address</label>
+              <label class="form-label fw-semibold">Email Address</label>
               <input type="email" name="email" class="form-control" placeholder="you@example.com" required />
             </div>
             <div class="mb-3">
-              <label class="form-label">Your Message</label>
+              <label class="form-label fw-semibold">Your Message</label>
               <textarea name="message" class="form-control" rows="5" placeholder="Write your message here..." required></textarea>
             </div>
-            <button type="submit" name="submit" class="btn btn-warning w-100">Send Message</button>
+            <button type="submit" name="submit" class="btn btn-warning w-100 fw-bold">Send Message</button>
           </form>
         </div>
 
         <!-- Contact Details -->
         <div class="col-md-6 ps-md-5 mt-5 mt-md-0">
           <div class="contact-info mb-4 d-flex align-items-center">
-            <i class="fas fa-map-marker-alt me-2"></i>
-            <p class="mb-0">Ranchi, Jharkhand, India</p>
+            <i class="fas fa-map-marker-alt me-3 fs-4 text-warning"></i>
+            <p class="mb-0">Sai Vihar Colony, Road No. 1, Madhukam, Ranchi, Jharkhand</p>
           </div>
           <div class="contact-info mb-4 d-flex align-items-center">
-            <i class="fas fa-envelope me-2"></i>
+            <i class="fas fa-envelope me-3 fs-4 text-warning"></i>
             <p class="mb-0">support@hungerhub.com</p>
           </div>
           <div class="contact-info mb-4 d-flex align-items-center">
-            <i class="fas fa-phone-alt me-2"></i>
-            <p class="mb-0">+91 9876543210</p>
+            <i class="fas fa-phone-alt me-3 fs-4 text-warning"></i>
+            <p class="mb-0">+91 8603972526</p>
           </div>
-          <div class="rounded overflow-hidden mt-4">
+          <div class="rounded-4 overflow-hidden mt-4 shadow-sm border">
             <iframe src="https://maps.google.com/maps?q=Ranchi&t=&z=13&ie=UTF8&iwloc=&output=embed"
               width="100%" height="220" style="border:0;" allowfullscreen loading="lazy"></iframe>
           </div>
@@ -394,6 +399,7 @@ require 'db.php';
       </div>
     </div>
   </section>
+  <!-- Contact Section End -->
 
   <?php include 'includes/footer.php'; ?>
 

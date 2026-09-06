@@ -5,9 +5,20 @@
  * Provides context-aware gastronomic recommendations, store policies, discounts, and real-time menu queries.
  */
 
+ini_set('display_errors', 0);
+error_reporting(0);
+
 header('Content-Type: application/json; charset=UTF-8');
-require_once 'db.php';
-require_once 'config.php';
+$dbLoaded = false;
+if (file_exists(__DIR__ . '/db.php')) {
+    require_once __DIR__ . '/db.php';
+    $dbLoaded = isset($conn) && $conn instanceof mysqli && !$conn->connect_error;
+}
+if (file_exists(__DIR__ . '/config.php')) {
+    require_once __DIR__ . '/config.php';
+}
+if (!defined('REST_NAME')) define('REST_NAME', 'HungerHub');
+if (!defined('REST_PHONE')) define('REST_PHONE', '+91 8603972526');
 
 $rawInput = file_get_contents('php://input');
 $data = json_decode($rawInput, true);
@@ -101,29 +112,35 @@ if (empty($responseMessage) && empty($sqlConditions)) {
     $types .= "sss";
 }
 
-// Query database if conditions exist
-if (!empty($sqlConditions)) {
-    $whereClause = implode(" AND ", $sqlConditions);
-    $querySql = "SELECT id, name, description, price, image, main_category, sub_category FROM menu_items WHERE $whereClause ORDER BY price ASC LIMIT 4";
-    
-    $stmt = $conn->prepare($querySql);
-    if ($stmt) {
-        if (!empty($params)) {
-            $stmt->bind_param($types, ...$params);
+// Query database if conditions exist and DB is connected
+if ($dbLoaded && !empty($sqlConditions)) {
+    try {
+        $whereClause = implode(" AND ", $sqlConditions);
+        $querySql = "SELECT id, name, description, price, image, main_category, sub_category FROM menu_items WHERE $whereClause ORDER BY price ASC LIMIT 4";
+        
+        $stmt = $conn->prepare($querySql);
+        if ($stmt) {
+            if (!empty($params)) {
+                $stmt->bind_param($types, ...$params);
+            }
+            $stmt->execute();
+            $res = $stmt->get_result();
+            if ($res) {
+                while ($r = $res->fetch_assoc()) {
+                    $items[] = [
+                        'id' => (int)$r['id'],
+                        'name' => htmlspecialchars($r['name']),
+                        'description' => htmlspecialchars($r['description'] ?? ''),
+                        'price' => (float)$r['price'],
+                        'formatted_price' => '₹' . number_format((float)$r['price'], 2),
+                        'image' => htmlspecialchars($r['image'] ?? 'images/default_food.jpg'),
+                        'main_category' => htmlspecialchars($r['main_category'] ?? 'Veg')
+                    ];
+                }
+            }
         }
-        $stmt->execute();
-        $res = $stmt->get_result();
-        while ($r = $res->fetch_assoc()) {
-            $items[] = [
-                'id' => (int)$r['id'],
-                'name' => htmlspecialchars($r['name']),
-                'description' => htmlspecialchars($r['description'] ?? ''),
-                'price' => (float)$r['price'],
-                'formatted_price' => '₹' . number_format((float)$r['price'], 2),
-                'image' => htmlspecialchars($r['image'] ?? 'images/default_food.jpg'),
-                'main_category' => htmlspecialchars($r['main_category'] ?? 'Veg')
-            ];
-        }
+    } catch (Exception $e) {
+        // Fall back gracefully to responseMessage
     }
 }
 
@@ -144,4 +161,4 @@ echo json_encode([
     'message' => $responseMessage,
     'items' => $items,
     'quick_replies' => $quickReplies
-]);
+], JSON_UNESCAPED_UNICODE);
