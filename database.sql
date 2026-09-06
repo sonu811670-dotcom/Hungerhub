@@ -249,27 +249,6 @@ INSERT INTO `orders` VALUES (1,'rahul','7894563210','ratu','Chicken Manchurian (
 UNLOCK TABLES;
 
 --
--- Temporary table structure for view `payment_analytics`
---
-
-DROP TABLE IF EXISTS `payment_analytics`;
-/*!50001 DROP VIEW IF EXISTS `payment_analytics`*/;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-/*!50001 CREATE VIEW `payment_analytics` AS SELECT
- 1 AS `payment_date`,
-  1 AS `payment_gateway`,
-  1 AS `total_transactions`,
-  1 AS `total_amount`,
-  1 AS `total_fees`,
-  1 AS `net_revenue`,
-  1 AS `avg_transaction_amount`,
-  1 AS `successful_payments`,
-  1 AS `failed_payments`,
-  1 AS `success_rate` */;
-SET character_set_client = @saved_cs_client;
-
---
 -- Table structure for table `payment_logs`
 --
 
@@ -453,24 +432,6 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'rahul kumar','chhoturahul944@gmail.com','$2y$10$fphMM9TNiNha1mdjXyBEsuf9tcdxPtXQgpjpOmMXMX0dmqTVHdq.G','2025-07-18 07:39:21','7894563210',NULL,NULL),(2,'Ayush','abc@gmail.com','$2y$10$.CzExDHIw.k77SzwaWPVMuXaQ.oAh4exQJer5ugTyLSGYAfvJ8zrK','2025-09-20 15:45:13','56466',NULL,NULL),(3,'Munna','munna@gmail.com','$2y$10$7pSjJ/S7di5G4ewRCelR/.SasEtLNeSm0Bo3.vbD4UsHN57GsuEzG','2025-09-20 15:50:39','123456789',NULL,NULL),(4,'Aayush Kumar','aayush.kr.gope@gmail.com','$2y$10$G0/vXRlzVMtG6gMnBfY4cu5EOOk/kfK4C1c5y4VqSNKFLMmh4QgMe','2025-09-20 17:21:49','9110160470',NULL,NULL),(5,'Test User','testuser@example.com','$2y$10$Wo43PFZx/GdQbIV3A2YZ4u9fidrfFGJHS0jo2oqxu5IZcxLB.x.g.','2025-09-20 17:51:36','9999999999',NULL,NULL),(6,'Sonu kumar','sonu811670@gmail.com','$2y$10$DD7Z32kYxMAttctJBgGEa.Jhq9uKmHODWBhgiiUwIvS.DDZb9bcZm','2026-09-02 14:28:31','08603972526','Virandavan nagar road no.1 opposite ravi fast food ,near sai vihar colony, new madhukam, ranchi , jharkhand',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Final view structure for view `payment_analytics`
---
-
-/*!50001 DROP VIEW IF EXISTS `payment_analytics`*/;
-/*!50001 SET @saved_cs_client          = @@character_set_client */;
-/*!50001 SET @saved_cs_results         = @@character_set_results */;
-/*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb4 */;
-/*!50001 SET character_set_results     = utf8mb4 */;
-/*!50001 SET collation_connection      = utf8mb4_general_ci */;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `payment_analytics` AS select cast(`p`.`created_at` as date) AS `payment_date`,`p`.`payment_gateway` AS `payment_gateway`,count(0) AS `total_transactions`,sum(`p`.`amount`) AS `total_amount`,sum(`p`.`transaction_fee`) AS `total_fees`,sum(`p`.`net_amount`) AS `net_revenue`,avg(`p`.`amount`) AS `avg_transaction_amount`,count(case when `p`.`status` = 'Captured' then 1 end) AS `successful_payments`,count(case when `p`.`status` = 'Failed' then 1 end) AS `failed_payments`,count(case when `p`.`status` = 'Captured' then 1 end) * 100.0 / count(0) AS `success_rate` from `payments` `p` group by cast(`p`.`created_at` as date),`p`.`payment_gateway` */;
-/*!50001 SET character_set_client      = @saved_cs_client */;
-/*!50001 SET character_set_results     = @saved_cs_results */;
-/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
