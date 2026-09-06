@@ -64,12 +64,11 @@ if ($is_local_env) {
     define('DB_PASS', getenv('DB_PASS') ?: '');
     define('DB_NAME', getenv('DB_NAME') ?: 'hungerhub');
 } else {
-    // Production / Live Hosting credentials (Hostinger / cPanel / Plesk)
-    // Replace these values with your hosting database details:
-    define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
-    define('DB_USER', getenv('DB_USER') ?: 'your_hosting_db_user');
-    define('DB_PASS', getenv('DB_PASS') ?: 'your_hosting_db_password');
-    define('DB_NAME', getenv('DB_NAME') ?: 'your_hosting_db_name');
+    // Production / Live Hosting credentials (InfinityFree)
+    define('DB_HOST', getenv('DB_HOST') ?: 'sql211.infinityfree.com');
+    define('DB_USER', getenv('DB_USER') ?: 'if0_42836912');
+    define('DB_PASS', getenv('DB_PASS') ?: 'YOUR_INFINITYFREE_PASSWORD');
+    define('DB_NAME', getenv('DB_NAME') ?: 'if0_42836912_hungerhub');
 }
 
 // -----------------------------------------------------------------------------
