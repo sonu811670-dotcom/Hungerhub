@@ -59,16 +59,17 @@ $is_local_env = in_array($_SERVER['SERVER_NAME'] ?? '', ['localhost', '127.0.0.1
     || str_contains($_SERVER['HTTP_HOST'] ?? '', 'trycloudflare');
 
 if ($is_local_env) {
-    define('DB_HOST', 'localhost');
-    define('DB_USER', 'root');
-    define('DB_PASS', '');
-    define('DB_NAME', 'hungerhub');
+    define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+    define('DB_USER', getenv('DB_USER') ?: 'root');
+    define('DB_PASS', getenv('DB_PASS') ?: '');
+    define('DB_NAME', getenv('DB_NAME') ?: 'hungerhub');
 } else {
-    // Production / Live Hosting credentials (cPanel / InfinityFree / Hostinger)
-    define('DB_HOST', 'localhost');
-    define('DB_USER', 'your_hosting_username');
-    define('DB_PASS', 'your_hosting_password');
-    define('DB_NAME', 'your_hosting_dbname');
+    // Production / Live Hosting credentials (Hostinger / cPanel / Plesk)
+    // Replace these values with your hosting database details:
+    define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+    define('DB_USER', getenv('DB_USER') ?: 'your_hosting_db_user');
+    define('DB_PASS', getenv('DB_PASS') ?: 'your_hosting_db_password');
+    define('DB_NAME', getenv('DB_NAME') ?: 'your_hosting_db_name');
 }
 
 // -----------------------------------------------------------------------------
@@ -77,9 +78,43 @@ if ($is_local_env) {
 function get_db_connection() {
     static $conn = null;
     if ($conn === null) {
-        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        mysqli_report(MYSQLI_REPORT_OFF);
+        $conn = @new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         if ($conn->connect_error) {
-            die("Database Connection Error: " . $conn->connect_error . " (Please verify settings in config.php)");
+            http_response_code(500);
+            ?>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Database Configuration Required - <?= htmlspecialchars(REST_NAME) ?></title>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+            </head>
+            <body class="bg-light d-flex align-items-center justify-content-center min-vh-100 p-4">
+                <div class="card shadow-lg border-0 rounded-4 p-4 text-center" style="max-width: 580px;">
+                    <div class="mb-3 text-warning">
+                        <i class="fas fa-database fa-3x"></i>
+                    </div>
+                    <h4 class="fw-bold mb-2">Live Database Setup Required</h4>
+                    <p class="text-muted small">HungerHub is deployed to your live server. Please set your hosting MySQL credentials to connect to your live database.</p>
+                    <div class="alert alert-warning text-start small mb-3">
+                        <strong>Quick Setup Steps:</strong><br>
+                        1. Open <code>config.php</code> in your hosting File Manager.<br>
+                        2. Under Production credentials, update <code>DB_USER</code>, <code>DB_PASS</code>, and <code>DB_NAME</code>.<br>
+                        3. Import <code>database.sql</code> into your database using phpMyAdmin.<br>
+                        <br>
+                        <span class="text-danger"><em>Server message: <?= htmlspecialchars($conn->connect_error) ?></em></span>
+                    </div>
+                    <a href="check_installation.php" class="btn btn-primary btn-sm fw-semibold">
+                        <i class="fas fa-stethoscope me-1"></i>Run Server Health Diagnostic
+                    </a>
+                </div>
+            </body>
+            </html>
+            <?php
+            exit();
         }
         $conn->set_charset("utf8mb4");
     }

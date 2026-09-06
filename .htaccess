@@ -1,11 +1,19 @@
-﻿# Prevent directory listing
+# Prevent directory listing
 Options -Indexes
 
 # Set default index file
 DirectoryIndex index.php index.html
 
-# Prevent direct access to SQL files, markdown docs, and git files
+# Prevent direct access to SQL dumps, markdown docs, logs, and sensitive files
 <FilesMatch "\.(sql|md|log|ini|git.*)$">
-    Order allow,deny
-    Deny from all
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
 </FilesMatch>
+
+# Enable standard UTF-8 encoding
+AddDefaultCharset UTF-8
