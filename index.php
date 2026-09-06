@@ -409,27 +409,6 @@ require 'db.php';
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init();
-  </script>
-<div style="width:300px;margin:auto;text-align:center;">
-  <h3>Ask HungerHub AI</h3>
-  <input id="userInput" type="text" placeholder="Ask me about food..." style="width:80%;">
-  <button onclick="sendMessage()">Send</button>
-  <div id="chatResponse" style="margin-top:10px;"></div>
-</div>
-
-<script>
-async function sendMessage() {
-  const message = document.getElementById('userInput').value;
-  const response = await fetch('chatbot.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: 'message=' + encodeURIComponent(message)
-  });
-  const text = await response.text();
-  document.getElementById('chatResponse').innerText = text;
-}
-</script>
-
 </body>
 
 </html>

@@ -87,44 +87,46 @@ $final_total = max(0, (float)$total_price - (float)$discount_amount);
       <div class="alert alert-info">Your cart is empty.</div>
       <a href="menu.php" class="btn btn-primary">Browse Menu</a>
     <?php else: ?>
-      <table class="table table-bordered align-middle text-center">
-        <thead class="table-dark">
-          <tr>
-            <th>Image</th>
-            <th>Item</th>
-            <th>Price (₹)</th>
-            <th>Quantity</th>
-            <th>Subtotal (₹)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($cart_items as $item): ?>
+      <div class="table-responsive shadow-sm rounded-3 mb-4">
+        <table class="table table-bordered align-middle text-center mb-0">
+          <thead class="table-dark">
             <tr>
-              <td><img src="<?= htmlspecialchars($item['image']) ?>" width="70" height="70" style="object-fit:cover;"></td>
-              <td><?= htmlspecialchars($item['name']) ?></td>
-              <td><?= number_format($item['price'], 2) ?></td>
-              <td><?= $item['quantity'] ?></td>
-              <td><?= number_format($item['subtotal'], 2) ?></td>
+              <th>Image</th>
+              <th>Item</th>
+              <th>Price (₹)</th>
+              <th>Quantity</th>
+              <th>Subtotal (₹)</th>
             </tr>
-          <?php endforeach; ?>
-          <tr class="table-light">
-            <td colspan="4" class="text-end"><strong>Subtotal:</strong></td>
-            <td><strong>₹ <?= number_format($total_price, 2) ?></strong></td>
-          </tr>
-          <?php if ($discount_amount > 0 && !empty($coupon_code)): ?>
+          </thead>
+          <tbody>
+            <?php foreach ($cart_items as $item): ?>
+              <tr>
+                <td><img src="<?= htmlspecialchars($item['image']) ?>" width="70" height="70" style="object-fit:cover;" class="rounded" onerror="this.src='https://cdn.jsdelivr.net/gh/sonu811670-dotcom/Hungerhub@main/' + (this.getAttribute('src') || '');"></td>
+                <td><?= htmlspecialchars($item['name']) ?></td>
+                <td><?= number_format($item['price'], 2) ?></td>
+                <td><?= $item['quantity'] ?></td>
+                <td><?= number_format($item['subtotal'], 2) ?></td>
+              </tr>
+            <?php endforeach; ?>
             <tr class="table-light">
-              <td colspan="4" class="text-end">
-                <strong>Coupon (<?= htmlspecialchars($coupon_code) ?>):</strong>
-              </td>
-              <td><strong>-₹ <?= number_format($discount_amount, 2) ?></strong></td>
+              <td colspan="4" class="text-end"><strong>Subtotal:</strong></td>
+              <td><strong>₹ <?= number_format($total_price, 2) ?></strong></td>
             </tr>
-          <?php endif; ?>
-          <tr class="table-light">
-            <td colspan="4" class="text-end"><strong>Total:</strong></td>
-            <td><strong>₹ <?= number_format($final_total, 2) ?></strong></td>
-          </tr>
-        </tbody>
-      </table>
+            <?php if ($discount_amount > 0 && !empty($coupon_code)): ?>
+              <tr class="table-light">
+                <td colspan="4" class="text-end">
+                  <strong>Coupon (<?= htmlspecialchars($coupon_code) ?>):</strong>
+                </td>
+                <td><strong>-₹ <?= number_format($discount_amount, 2) ?></strong></td>
+              </tr>
+            <?php endif; ?>
+            <tr class="table-light">
+              <td colspan="4" class="text-end"><strong>Total:</strong></td>
+              <td><strong>₹ <?= number_format($final_total, 2) ?></strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div class="card mb-3">
         <div class="card-body">
