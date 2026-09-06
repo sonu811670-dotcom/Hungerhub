@@ -162,4 +162,4 @@ Lead Full-Stack Software Engineer
 - 📧 Email: [sonu811670@gmail.com](mailto:sonu811670@gmail.com)  
 - 📱 Phone / UPI: +91 8603972526  
 - 💼 Focus: High-throughput Web Applications, Secure FinTech Workflows, and Distributed Systems  
-- 🎓 Final Year Computer Science Engineering Capstone
+- 🎓 Final Year Bachelor of Science in Information Technology
