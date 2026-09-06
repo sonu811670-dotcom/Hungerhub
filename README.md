@@ -10,7 +10,7 @@
 
 > **Lead Architect & Developer:** Sonu Kumar  
 > **Contact:** [sonu811670@gmail.com](mailto:sonu811670@gmail.com) | +91 8603972526  
-> **Repository:** [https://github.com/Kira-ayush/Hunger-Hub](https://github.com/Kira-ayush/Hunger-Hub)  
+> **Repository:** [https://github.com/sonu811670-dotcom/HungerHub](https://github.com/sonu811670-dotcom/HungerHub)  
 > **Location:** Ranchi, Jharkhand, India  
 
 ---
@@ -136,7 +136,7 @@ Unified, definer-free SQL script compatible with MySQL 5.7+ and 8.0+:
 ```bash
 # Clone into XAMPP web root
 cd C:\xampp\htdocs\hungerhub
-git clone https://github.com/Kira-ayush/Hunger-Hub.git hungerhub
+git clone https://github.com/sonu811670-dotcom/HungerHub.git hungerhub
 ```
 
 ### 3. Database Import
